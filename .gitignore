@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+cache/
+data/
+results/
+logs/
+logs_verify/
+.idea/
