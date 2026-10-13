@@ -93,7 +93,7 @@ def main():
         df = pd.read_csv(cand)
         piv = df.groupby(["protocol", "method"])["mse_norm"].mean().unstack()
         ax = piv.plot(kind="bar", figsize=(8, 4), logy=True)
-        ax.set_ylabel("normalized MSE (log)")
+        ax.set_ylabel("standardised MSE (log)")
         ax.set_title("Imputation error by missing-data protocol")
         fig2 = ax.get_figure()
         fig2.tight_layout()
