@@ -92,13 +92,14 @@ def main():
     if os.path.exists(cand):
         df = pd.read_csv(cand)
         piv = df.groupby(["protocol", "method"])["mse_norm"].mean().unstack()
-        ax = piv.plot(kind="bar", figsize=(8, 4), logy=True)
+        ax = piv.plot(kind="bar", figsize=(8, 3.6), logy=True)
         ax.set_ylabel("standardised MSE (log)")
         ax.set_title("Imputation error by missing-data protocol")
+        ax.legend(bbox_to_anchor=(1.01, 1), loc="upper left",
+                  borderaxespad=0, frameon=False)
         fig2 = ax.get_figure()
-        fig2.tight_layout()
         f2 = os.path.join(args.outdir, f"fig2_metrics_{cfg.modality}.png")
-        fig2.savefig(f2, dpi=300)
+        fig2.savefig(f2, dpi=300, bbox_inches="tight")
         print("saved", f2)
     else:
         print(f"no eval csv at {cand}; fig2 skipped")
